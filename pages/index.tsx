@@ -1,39 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { Button, TextField } from '@mui/material';
-import { Box } from '@mui/system';
-import { toast } from "react-toastify";
-import { useRouter } from 'next/router';
+import { MenuItem, NativeSelect, Select, Typography } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import Mastercard from '../components/Mastercard';
 import Chart from '../components/Chart';
+import FlexBetween from '../components/styleComponents/FlexBetween';
 
 const Login = () => {
-
   const [domLoaded, setDomLoaded] = useState(false);
+  const [selectedYear, setSelectedYear] = useState('2023'); // Значення за замовчуванням 2023
 
   useEffect(() => {
     setDomLoaded(true);
   }, []);
 
-  const data = [
-    { name: 'Стовпець 1', value: 10 },
-    { name: 'Стовпець 2', value: 20 },
-    { name: 'Стовпець 3', value: 15 },
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
 
-  ];
   return (
     <MainLayout>
-      MM
       <Mastercard />
-      <div>
-        <h1>Графік</h1>
-
-        {domLoaded && <Chart data={data} />}
-      </div>
+      <FlexBetween sx={{ pt: 2, pb: 2 }}>
+        <Typography variant='h5'>Analytics</Typography>
+        <NativeSelect
+          value={selectedYear}
+          onChange={handleYearChange}
+          inputProps={{
+            name: 'year',
+            id: 'year-select',
+          }}
+        >
+          <option value={'2021'}>Year - 2021</option>
+          <option value={'2022'}>Year - 2022</option>
+          <option value={'2023'}>Year - 2023</option>
+        </NativeSelect>
+      </FlexBetween>
+      {domLoaded && <Chart selectedYear={selectedYear} />}
     </MainLayout>
   );
 };
 
-export default Login
-
-
+export default Login;

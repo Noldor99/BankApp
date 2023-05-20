@@ -20,6 +20,9 @@ a {
 .anim-cart {
   animation: bottom 0.4s;
 }
+.recharts-surface {
+  overflow: visible;
+}
 
 @keyframes bottom {
   from {
