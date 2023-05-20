@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,16 +10,16 @@ import { Avatar, Badge } from '@mui/material';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import FlexBetween from './styleComponents/FlexBetween';
 import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+
 
 export default function Header() {
-  // @ts-ignore
-  const { TitleHeader } = useSelector(state => state.param)
+  const { TitleHeader } = useSelector((state: RootState) => state.param);
 
   return (
-    <Box >
+    <Box>
       <AppBar color='inherit' position="static" sx={{ boxShadow: 'none' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-
           <Avatar>H</Avatar>
           <Typography variant="h6" component="div" alignItems='center'>
             {TitleHeader}
@@ -27,7 +27,6 @@ export default function Header() {
           <Badge badgeContent={4} color="primary">
             <NotificationsNoneIcon color="action" />
           </Badge>
-
         </Toolbar>
       </AppBar>
     </Box>

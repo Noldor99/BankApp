@@ -11,10 +11,23 @@ import {
 import moment from "moment";
 import { pdata } from "../data/pdata";
 
-const Chart = ({ selectedYear }: any) => {
+interface Purchase {
+  date: string;
+  amount: number;
+}
 
-  const aggregateDataByMonth = (data) => {
-    const aggregatedData = {};
+interface AggregatedData {
+  date: string;
+  amount: number;
+}
+
+interface Props {
+  selectedYear: string;
+}
+
+const Chart: React.FC<Props> = ({ selectedYear }) => {
+  const aggregateDataByMonth = (data: Purchase[]): AggregatedData[] => {
+    const aggregatedData: { [month: string]: number } = {};
 
     data.forEach((purchase) => {
       const year = moment(purchase.date).format("YYYY");
@@ -38,9 +51,7 @@ const Chart = ({ selectedYear }: any) => {
 
   const formattedDataMonth = aggregateDataByMonth(pdata.purchases);
 
-
-
-  const formatDate = (date) => {
+  const formatDate = (date: string) => {
     return moment(date).format("MMM");
   };
 
@@ -51,7 +62,7 @@ const Chart = ({ selectedYear }: any) => {
     };
   });
 
-  const formatLabel = (value) => {
+  const formatLabel = (value: number) => {
     return `$${value}`;
   };
 
@@ -59,13 +70,9 @@ const Chart = ({ selectedYear }: any) => {
     return Math.max(...formattedData.map((item) => item.amount));
   };
 
-
-
   return (
-    <ResponsiveContainer width="100%" aspect={2} >
-
+    <ResponsiveContainer width="100%" aspect={2}>
       <BarChart
-
         width={300}
         height={400}
         data={formattedData}
@@ -78,9 +85,10 @@ const Chart = ({ selectedYear }: any) => {
       >
         <XAxis
           dataKey="date"
-          axisLine={false} tickLine={false}
+          axisLine={false}
+          tickLine={false}
           tick={{ fontSize: 10 }}
-          interval={0} // Відображення всіх значень місяців
+          interval={0} // Display all month values
         />
         <YAxis
           domain={[0, "dataMax+3"]}
@@ -89,7 +97,6 @@ const Chart = ({ selectedYear }: any) => {
           hide
         />
         <Tooltip />
-
         <Bar
           style={{ overflow: "visible" }}
           dataKey="amount"
@@ -108,7 +115,6 @@ const Chart = ({ selectedYear }: any) => {
           ))}
         </Bar>
       </BarChart>
-
     </ResponsiveContainer>
   );
 };

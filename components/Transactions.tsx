@@ -1,7 +1,7 @@
-import { Avatar, Button, Drawer, Grid, List, ListItem, ListItemAvatar, ListItemText, Paper, Stack, Typography } from '@mui/material'
+import { Avatar, Button, Grid, Paper, Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import { pdata } from '../data/pdata'
+import { IPurchase, pdata } from '../data/pdata'
 import FlexBetween from './styleComponents/FlexBetween'
 import ImageIcon from '@mui/icons-material/Image';
 import moment from 'moment'
@@ -29,7 +29,7 @@ const Transactions = () => {
       </FlexBetween>
 
       <Stack spacing={2} pt={2} pb={2}>
-        {limitedPurchases.map((purchase) => (
+        {limitedPurchases.map((purchase: IPurchase) => (
           <Paper
             key={purchase.id}
             sx={{ width: '100%', maxWidth: 360, padding: 2 }}>

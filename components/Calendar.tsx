@@ -9,15 +9,17 @@ import CheckIcon from "@mui/icons-material/Check";
 import { pdata } from "../data/pdata";
 
 const Calendar = () => {
-  const [value, setValue] = useState(new Date());
-  const [dates, setDates] = useState([]);
+  const [value, setValue] = useState<Date | null>(new Date());
+  const [dates, setDates] = useState<Date[]>([]);
 
   useEffect(() => {
-    const dateObjects = pdata.purchases.map(
-      (purchase) => new Date(purchase.date)
-    );
+    const dateObjects = pdata.purchases.map((purchase) => new Date(purchase.date));
     setDates(dateObjects);
   }, []);
+
+  const handleDateChange = (newValue: Date | null) => {
+    setValue(newValue || new Date()); // Provide a default value in case of null
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -25,7 +27,7 @@ const Calendar = () => {
         orientation="portrait"
         value={value}
         disableFuture
-        onChange={(newValue) => setValue(newValue)}
+        onChange={handleDateChange}
         renderInput={(params) => <TextField {...params} />}
         renderDay={(day, _value, DayComponentProps) => {
           const isSelected = dates.some((date) => {
@@ -35,12 +37,11 @@ const Calendar = () => {
               date.getFullYear() === day.getFullYear()
             );
           });
-
           return (
             <Badge
               key={day.toString()}
               overlap="circular"
-              badgeContent={isSelected ? <CheckIcon color="red" /> : undefined}
+              badgeContent={isSelected ? <CheckIcon /> : undefined}
             >
               <PickersDay {...DayComponentProps} />
             </Badge>

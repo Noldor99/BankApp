@@ -1,4 +1,15 @@
-export const pdata = {
+export interface IPurchase {
+  id: number;
+  date: string;
+  amount: number;
+  store: string;
+}
+
+interface PData {
+  purchases: IPurchase[];
+}
+
+export const pdata: PData = {
   purchases: [
     {
       id: 1,

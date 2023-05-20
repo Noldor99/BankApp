@@ -2,8 +2,9 @@ import { Avatar, Box, Grid, Paper, Stack, Typography } from '@mui/material';
 import moment from 'moment';
 import FlexBetween from '../../components/styleComponents/FlexBetween';
 import ImageIcon from '@mui/icons-material/Image';
-import { pdata } from '../../data/pdata';
+import { IPurchase, pdata } from '../../data/pdata';
 import MainLayout from '../../layouts/MainLayout';
+
 
 export default function TransactionsAll() {
 
@@ -11,7 +12,7 @@ export default function TransactionsAll() {
   return (
     <MainLayout>
       <Stack spacing={2} pt={2} pb={2}>
-        {pdata.purchases.map((purchase) => (
+        {pdata.purchases.map((purchase: IPurchase) => (
           <Paper
             key={purchase.id}
             sx={{ width: '100%', maxWidth: 360, padding: 2 }}>
@@ -35,6 +36,7 @@ export default function TransactionsAll() {
           </Paper>
         ))}
       </Stack>
+
     </MainLayout>
   );
 }

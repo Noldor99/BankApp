@@ -4,11 +4,6 @@ import { MoreHoriz } from '@mui/icons-material';
 import FlexBetween from './styleComponents/FlexBetween';
 
 
-const MastercardLogo = styled('img')(({ theme }) => ({
-  width: '80%',
-  height: 'auto',
-}));
-
 const Mastercard: React.FC = () => {
   const cardNumber = '2544754537851023';
 

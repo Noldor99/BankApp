@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { MenuItem, NativeSelect, Select, Typography } from '@mui/material';
+import React, { useEffect, useState, ChangeEvent } from 'react';
+import { NativeSelect, Typography } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import Mastercard from '../components/Mastercard';
 import Chart from '../components/Chart';
@@ -8,13 +8,13 @@ import Transactions from '../components/Transactions';
 
 const App = () => {
   const [domLoaded, setDomLoaded] = useState(false);
-  const [selectedYear, setSelectedYear] = useState('2023'); // Значення за замовчуванням 2023
+  const [selectedYear, setSelectedYear] = useState<string>('2023');
 
   useEffect(() => {
     setDomLoaded(true);
   }, []);
 
-  const handleYearChange = (event) => {
+  const handleYearChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(event.target.value);
   };
 
