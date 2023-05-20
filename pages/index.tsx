@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout';
 import Mastercard from '../components/Mastercard';
 import Chart from '../components/Chart';
 import FlexBetween from '../components/styleComponents/FlexBetween';
+import Transactions from '../components/Transactions';
 
 const Login = () => {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -36,6 +37,7 @@ const Login = () => {
         </NativeSelect>
       </FlexBetween>
       {domLoaded && <Chart selectedYear={selectedYear} />}
+      <Transactions />
     </MainLayout>
   );
 };
