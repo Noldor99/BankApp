@@ -6,7 +6,7 @@ import Chart from '../components/Chart';
 import FlexBetween from '../components/styleComponents/FlexBetween';
 import Transactions from '../components/Transactions';
 
-const Login = () => {
+const App = () => {
   const [domLoaded, setDomLoaded] = useState(false);
   const [selectedYear, setSelectedYear] = useState('2023'); // Значення за замовчуванням 2023
 
@@ -42,4 +42,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default App;

@@ -1,12 +1,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import todoReducer from "./slice/todoSlice";
-import { apiSlice } from './slices/apiSlice';
-import authReducer from './slices/authSlice';
+import paramReducer from "./slice/paramSlice";
 
 const rootReducer = combineReducers({
-  todo: todoReducer,
-  [apiSlice.reducerPath]: apiSlice.reducer,
-  auth: authReducer,
+  param: paramReducer,
 });
 
 const store = configureStore({
@@ -14,7 +10,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(apiSlice.middleware),
+    }),
   devTools: true,
 });
 

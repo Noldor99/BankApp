@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "pages/todo/index.jsx"
+    "pages/todo/index.jsx",
+    "components/Calendar.jsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,35 +1,17 @@
-import { Avatar, Button, Drawer, Grid, List, ListItem, ListItemAvatar, ListItemText, Paper, Stack, Typography } from '@mui/material'
-import { Box } from '@mui/system'
-import React from 'react'
-import { pdata } from '../data/pdata'
-import FlexBetween from './styleComponents/FlexBetween'
+import { Avatar, Box, Grid, Paper, Stack, Typography } from '@mui/material';
+import moment from 'moment';
+import FlexBetween from '../../components/styleComponents/FlexBetween';
 import ImageIcon from '@mui/icons-material/Image';
-import moment from 'moment'
-import { useRouter } from 'next/router'
+import { pdata } from '../../data/pdata';
+import MainLayout from '../../layouts/MainLayout';
 
+export default function TransactionsAll() {
 
-const Transactions = () => {
-
-  const limitedPurchases = pdata.purchases.slice(0, 3); // Get the first three purchases
-
-  const router = useRouter()
 
   return (
-    <Box>
-      <FlexBetween>
-        <Typography variant='h5'>Transactions</Typography>
-        <Button
-          variant='outlined'
-          color='info'
-          size='small'
-          onClick={() => router.push('transactions')}
-        >
-          View All
-        </Button>
-      </FlexBetween>
-
+    <MainLayout>
       <Stack spacing={2} pt={2} pb={2}>
-        {limitedPurchases.map((purchase) => (
+        {pdata.purchases.map((purchase) => (
           <Paper
             key={purchase.id}
             sx={{ width: '100%', maxWidth: 360, padding: 2 }}>
@@ -53,8 +35,6 @@ const Transactions = () => {
           </Paper>
         ))}
       </Stack>
-    </Box>
-  )
+    </MainLayout>
+  );
 }
-
-export default Transactions
