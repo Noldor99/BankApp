@@ -33,7 +33,7 @@ const MainLayout: React.FC<MainLayoutProps>
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
-          maxWidth: '360px'
+          maxWidth: { xs: '360px' }
         }}>
           <Header />
           <Box sx={{ flex: '1 0 auto' }}>
