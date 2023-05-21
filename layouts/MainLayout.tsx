@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Head from "next/head";
-import { Box, Container, Toolbar } from '@mui/material';
+import { Box, Container, Toolbar, Typography } from '@mui/material';
 import Header from '../components/Header';
 import Bottom from '../components/Bottom';
 
@@ -41,6 +41,7 @@ const MainLayout: React.FC<MainLayoutProps>
           </Box>
           <Toolbar />
           <Bottom />
+        
         </Container>
       </>
     );

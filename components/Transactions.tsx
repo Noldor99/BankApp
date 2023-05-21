@@ -6,9 +6,14 @@ import FlexBetween from './styleComponents/FlexBetween'
 import ImageIcon from '@mui/icons-material/Image';
 import moment from 'moment'
 import { useRouter } from 'next/router'
+import TypographyGreen from './styleComponents/TypographyGreen'
+import theme from '../theme/thema'
+import PaperRounding from './styleComponents/containers/PaperRounding'
 
 
 const Transactions = () => {
+
+
 
   const limitedPurchases = pdata.purchases.slice(0, 3); // Get the first three purchases
 
@@ -17,7 +22,7 @@ const Transactions = () => {
   return (
     <Box>
       <FlexBetween>
-        <Typography variant='h5'>Transactions</Typography>
+        <Typography variant='subtitle1'>Transactions</Typography>
         <Button
           variant='outlined'
           color='info'
@@ -30,7 +35,7 @@ const Transactions = () => {
 
       <Stack spacing={2} pt={2} pb={2}>
         {limitedPurchases.map((purchase: IPurchase) => (
-          <Paper
+          <PaperRounding
             key={purchase.id}
             sx={{ width: '100%', maxWidth: 360, padding: 2 }}>
             <Grid container spacing={2} >
@@ -41,8 +46,8 @@ const Transactions = () => {
               </Grid>
               <Grid container item xs={10} flexDirection='column'>
                 <FlexBetween>
-                  <Typography  >{purchase.store}</Typography>
-                  <Typography >{purchase.amount}$</Typography>
+                  <Typography pb={1}>{purchase.store}</Typography>
+                  <TypographyGreen theme={theme}>{purchase.amount}$</TypographyGreen>
                 </FlexBetween>
                 <FlexBetween>
                   <Typography variant='body2'>Bank Account</Typography>
@@ -50,7 +55,7 @@ const Transactions = () => {
                 </FlexBetween>
               </Grid>
             </Grid>
-          </Paper>
+          </PaperRounding>
         ))}
       </Stack>
     </Box>

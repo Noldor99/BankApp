@@ -21,7 +21,7 @@ export default function Header() {
       <AppBar color='inherit' position="static" sx={{ boxShadow: 'none' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Avatar>H</Avatar>
-          <Typography variant="h6" component="div" alignItems='center'>
+          <Typography variant="h3" component="div" alignItems='center'>
             {TitleHeader}
           </Typography>
           <Badge badgeContent={4} color="primary">

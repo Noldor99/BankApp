@@ -5,6 +5,8 @@ import Mastercard from '../components/Mastercard';
 import Chart from '../components/Chart';
 import FlexBetween from '../components/styleComponents/FlexBetween';
 import Transactions from '../components/Transactions';
+import NativeSelectForm from '../components/styleComponents/NativeSelectForm';
+import theme from '../theme/thema';
 
 const App = () => {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -22,8 +24,9 @@ const App = () => {
     <MainLayout>
       <Mastercard />
       <FlexBetween sx={{ pt: 2, pb: 2 }}>
-        <Typography variant='h5'>Analytics</Typography>
-        <NativeSelect
+        <Typography variant='subtitle1'>Analytics</Typography>
+        <NativeSelectForm
+          theme={theme}
           value={selectedYear}
           onChange={handleYearChange}
           inputProps={{
@@ -34,7 +37,7 @@ const App = () => {
           <option value={'2021'}>Year - 2021</option>
           <option value={'2022'}>Year - 2022</option>
           <option value={'2023'}>Year - 2023</option>
-        </NativeSelect>
+        </NativeSelectForm>
       </FlexBetween>
       {domLoaded && <Chart selectedYear={selectedYear} />}
       <Transactions />
